@@ -30,6 +30,25 @@ class Node:
 
 # Use the insert method to add nodes
 root = Node(12)
+FROM openjdk:22
+
+WORKDIR /app
+
+COPY demo.java src/devops/demo.java
+
+RUN javac -d classes src/devops/demo.java
+
+CMD ["java","-cp","classes", "devops.demo"]
+
+
+
+FROM python:3.13
+
+WORKDIR /app
+
+COPY demo.py src/devops1/demo.py
+
+CMD ["python","src/devops1/demo.py"]
 root.insert(6)
 root.insert(14)
 root.insert(3)
